@@ -102,3 +102,79 @@ function _walkRules(root: Root) {
 }
 ```
 
+
+### insert, 插入
+
+#### 1. insertBefore, 插入到当前规则的前面
+
+```js
+/**
+ * 在 root 中的第一个 Node 前插入新的 Node
+ * @param index
+ * @param root
+ */
+function _insertBefore(index: number, root: Root) {
+  root.insertBefore(index, `
+.red {
+  color: red
+}`)
+}
+```
+
+#### 2. insertAfter, 插入到当前规则的后面
+
+```js
+/**
+ * 在 root 中的第一个 Node 后插入新的 Node
+ * @param index
+ * @param root
+ */
+function _insertAfter(index: number, root: Root) {
+  root.insertAfter(index, `
+.black { 
+  color: black 
+}`)
+}
+```
+
+#### 3. append, 追加到所有规则的后面
+
+```js
+/**
+ * 追加 两个 Node
+ * @param root
+ */
+function _append(root: Root) {
+  root.append(
+    '.black { color: black}',
+    '.red { color: red }',
+  )
+}
+```
+
+### remove, 移除
+
+#### 1. 移除所有的规则
+
+```js
+/**
+ * 移除所有的 Node
+ * @param root
+ */
+function _removeAll(root: Root) {
+  root.removeAll()
+}
+```
+
+#### 2. 移除指定的规则
+
+```js
+/**
+ * 移除指定的 Node
+ * @param root
+ */
+function _removeChild(root: Root) {
+  root.removeChild(root.nodes[1])
+}
+```
+

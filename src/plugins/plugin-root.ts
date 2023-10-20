@@ -74,6 +74,57 @@ function _walk(root: Root) {
 }
 
 /**
+ * 在 root 中的第一个 Node 前插入新的 Node
+ * @param index
+ * @param root
+ */
+function _insertBefore(index: number, root: Root) {
+  root.insertBefore(index, `
+.red {
+  color: red
+}`)
+}
+
+/**
+ * 在 root 中的第一个 Node 后插入新的 Node
+ * @param index
+ * @param root
+ */
+function _insertAfter(index: number, root: Root) {
+  root.insertAfter(index, `
+.black { 
+  color: black 
+}`)
+}
+
+/**
+ * 追加 两个 Node
+ * @param root
+ */
+function _append(root: Root) {
+  root.append(
+    '.black { color: black}',
+    '.red { color: red }',
+  )
+}
+
+/**
+ * 移除所有的 Node
+ * @param root
+ */
+function _removeAll(root: Root) {
+  root.removeAll()
+}
+
+/**
+ * 移除指定的 Node
+ * @param root
+ */
+function _removeChild(root: Root) {
+  root.removeChild(root.nodes[1])
+}
+
+/**
  * 打印 root 属性 | 函数
  * @param root
  */
@@ -144,12 +195,6 @@ function _printRoot(root: Root) {
   // next
   log('✅ root.next : ', root.next)
 
-  // insertBefore
-  log('✅ root.insertBefore : ', root.insertBefore)
-
-  // insertAfter
-  log('✅ root.insertAfter : ', root.insertAfter)
-
   // index
   log('✅ root.index : ', root.index)
 
@@ -177,17 +222,8 @@ function _printRoot(root: Root) {
   // cloneRaws
   // log('root.cloneRaws : ', root.cloneRaws)
 
-  // before
-  log('✅ root.before : ', root.before)
-
   // assign
   log('✅ root.assign : ', root.assign)
-
-  // append
-  log('✅ root.append : ', root.append)
-
-  // after
-  log('✅ root.after : ', root.after)
 }
 
 export default function (opts = {}): AcceptedPlugin {
@@ -198,6 +234,9 @@ export default function (opts = {}): AcceptedPlugin {
       return {
         // 在整个 css 文档加载中调用一次
         Once(root, _helper) {
+          // 打印 root 属性 | 函数
+          // _printRoot(root)
+
           // 遍历 rules
           // _walkRules(root)
 
@@ -213,8 +252,20 @@ export default function (opts = {}): AcceptedPlugin {
           // 遍历所有 Node
           // _walk(root)
 
-          // 打印 root 属性 | 函数
-          _printRoot(root)
+          // 在 root 中的第一个 Node 前插入新的 Node
+          // _insertBefore(1, root)
+
+          // 在 root 中的第一个 Node 后插入新的 Node
+          // _insertAfter(1, root)
+
+          // 追加 两个 Node
+          // _append(root)
+
+          // 删除指定的 Node
+          _removeChild(root)
+
+          // 移除所有的 Node
+          // _removeAll(root)
         },
       }
     },
