@@ -2,6 +2,8 @@ import { log } from 'node:console'
 import postcss from 'postcss'
 
 import pluginRoot from './plugins/plugin-root'
+import pluginRule from './plugins/plugin-rule'
+import pluginComment from './plugins/plugin-comment'
 
 async function startup() {
   const text = `
@@ -10,7 +12,7 @@ async function startup() {
 * the syntax tree created by chosen parser.
 * Enjoy!
 */
- 
+
 @media screen and (min-width: 480px) {
     body {
         background-color: lightgreen;
@@ -29,7 +31,11 @@ ul li {
     width: 100%;
 }
 `
-  const plugins = [pluginRoot()]
+  const plugins = [
+    // pluginRoot(),
+    // pluginRule(),
+    pluginComment(),
+  ]
   const result = await postcss(plugins).process(text, { from: undefined, to: undefined })
   log('Result : \n', result.root.toString())
 }

@@ -6,6 +6,56 @@
 
 ## 属性 
 
+### nodes, 所有 Node 集合
+
+```js
+/**
+ * 所有 Node 集合
+ * @returns
+ */
+root.index(root.nodes[2])
+```
+
+### first, 第一个 Node
+
+```js
+/**
+ * 第一个 Node
+ * @returns
+ */
+root.first?.toString()
+```
+
+### last, 最后一个 Node
+
+```js
+/**
+ * 最后一个 Node
+ * @returns
+ */
+root.last?.toString()
+```
+
+### type, 类型
+
+
+```js
+root.type
+```
+
+### source, 源码
+
+
+```js
+root.source
+```
+
+### raws, 存在的不必要的空白字符和符号
+
+```js
+root.raws
+```
+
 ## 函数 
 
 ### walk, 遍历 
@@ -102,6 +152,20 @@ function _walkRules(root: Root) {
 }
 ```
 
+#### 6. each, 遍历直接 Node
+
+```js
+/**
+ * 遍历直接子节点
+ * @param root
+ */
+function _each(root: Root) {
+  root.each((node) => {
+    log('root.each : ', node.type)
+  })
+}
+```
+
 
 ### insert, 插入
 
@@ -154,7 +218,7 @@ function _append(root: Root) {
 
 ### remove, 移除
 
-#### 1. 移除所有的规则
+#### 1. removeAll, 移除所有的规则
 
 ```js
 /**
@@ -166,7 +230,7 @@ function _removeAll(root: Root) {
 }
 ```
 
-#### 2. 移除指定的规则
+#### 2. removeChild, 移除指定的规则
 
 ```js
 /**
@@ -178,3 +242,52 @@ function _removeChild(root: Root) {
 }
 ```
 
+### toXXX, 输出
+
+#### 1. toString, 输出字符串
+
+```js
+/**
+ * 输出 root 的原始文本
+ * @param root
+ */
+function _toString(root: Root) {
+  log('root.toString : ', root.toString())
+}
+```
+
+#### 2. toResult, 输出对象
+
+```js
+/**
+ * 输出 root 的 Result 实例
+ * @param root
+ */
+function _toResult(root: Root) {
+  log('root.toResult : ', root.toResult())
+}
+```
+
+#### 3. toJSON, 输出 JSON
+
+```js
+/**
+ * 输出 root 的 json 风格
+ * @param root
+ */
+function _toJSON(root: Root) {
+  log('root.toJSON : ', root.toJSON())
+}
+```
+
+### root, 查找根实例
+
+```js
+/**
+ * 查找 root
+ * @param root
+ */
+function _root(root: Root) {
+  log('compare root : ', root.nodes[0].root() === root)
+}
+```

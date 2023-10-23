@@ -74,6 +74,16 @@ function _walk(root: Root) {
 }
 
 /**
+ * 遍历直接子节点
+ * @param root
+ */
+function _each(root: Root) {
+  root.each((node) => {
+    log('root.each : ', node.type)
+  })
+}
+
+/**
  * 在 root 中的第一个 Node 前插入新的 Node
  * @param index
  * @param root
@@ -125,105 +135,74 @@ function _removeChild(root: Root) {
 }
 
 /**
+ * 输出 root 的原始文本
+ * @param root
+ */
+function _toString(root: Root) {
+  log('root.toString : ', root.toString())
+}
+
+/**
+ * 输出 root 的 Result 实例
+ * @param root
+ */
+function _toResult(root: Root) {
+  log('root.toResult : ', root.toResult())
+}
+
+/**
+ * 输出 root 的 json 风格
+ * @param root
+ */
+function _toJSON(root: Root) {
+  log('root.toJSON : ', root.toJSON())
+}
+
+/**
+ * 查找 root
+ * @param root
+ */
+function _root(root: Root) {
+  log('compare root : ', root.nodes[0].root() === root)
+}
+
+/**
  * 打印 root 属性 | 函数
  * @param root
  */
 function _printRoot(root: Root) {
-  // 输出 root 的 type 类型
-  log('root.type : ', root.type)
-
-  // 输出 root 的原始文本
-  log('root.toString : ', root.toString())
-
-  // 输出 root 的 Result 实例
-  log('root.toResult : ', root.toResult())
-
-  // 输出 root 的 json 风格
-  log('root.toJSON : ', root.toJSON())
-
-  // source
-  log('root.source : ', root.source)
-
-  // root
-  log('root.root : ', root.root)
-
   // replaceWith
-  log('root.replaceWith : ', root.replaceWith)
+  // log('root.replaceWith : ', root.replaceWith)
 
   // replaceValues
-  log('root.replaceValues : ', root.replaceValues)
-
-  // removeChild
-  log('root.removeChild : ', root.removeChild)
-
-  // removeAll
-  log('root.removeAll : ', root.removeAll)
-
-  // remove
-  log('root.remove : ', root.remove)
-
-  // raws
-  log('root.raws : ', root.raws)
+  // log('root.replaceValues : ', root.replaceValues)
 
   // raw
-  log('root.raw : ', root.raw)
+  // log('root.raw : ', root.raw)
 
   // rangeBy
-  log('root.rangeBy : ', root.rangeBy)
+  // log('root.rangeBy : ', root.rangeBy)
 
   // push
-  log('root.replaceWith : ', root.replaceWith)
-
-  // prev
-  log('root.prev : ', root.prev)
+  // log('root.replaceWith : ', root.replaceWith)
 
   // prepend
-  log('root.prepend : ', root.prepend)
+  // log('root.prepend : ', root.prepend)
 
   // positionInside
-  log('root.positionInside : ', root.positionInside)
+  // log('root.positionInside : ', root.positionInside)
 
   // positionBy
-  log('root.positionBy : ', root.positionBy)
-
-  // parent
-  log('❌ root.parent : ', root.parent)
-
-  // nodes
-  log('root.nodes : ', root.nodes)
-
-  // next
-  log('✅ root.next : ', root.next)
+  // log('root.positionBy : ', root.positionBy)
 
   // index
   log('✅ root.index : ', root.index)
 
   // some
-  log('✅ root.some : ', root.some)
+  // log('✅ root.some : ', root.some)
 
   // every
-  log('✅ root.every : ', root.every)
-
-  // error
-  log('✅ root.error : ', root.error)
-
-  // each
-  log('✅ root.each : ', root.each)
-
-  // cloneBefore
-  log('✅ root.cloneBefore : ', root.cloneBefore)
-
-  // cloneAfter
-  log('✅ root.cloneAfter : ', root.cloneAfter)
-
-  // clone
-  log('✅ root.clone : ', root.clone)
-
-  // cloneRaws
-  // log('root.cloneRaws : ', root.cloneRaws)
-
-  // assign
-  log('✅ root.assign : ', root.assign)
+  // log('✅ root.every : ', root.every)
 }
 
 export default function (opts = {}): AcceptedPlugin {
@@ -252,6 +231,9 @@ export default function (opts = {}): AcceptedPlugin {
           // 遍历所有 Node
           // _walk(root)
 
+          // 遍历直接子节点
+          // _each(root)
+
           // 在 root 中的第一个 Node 前插入新的 Node
           // _insertBefore(1, root)
 
@@ -262,10 +244,24 @@ export default function (opts = {}): AcceptedPlugin {
           // _append(root)
 
           // 删除指定的 Node
-          _removeChild(root)
+          // _removeChild(root)
 
           // 移除所有的 Node
           // _removeAll(root)
+
+          // 输出 root 的原始文本
+          // _toString(root)
+
+          // 输出 root 的 Result 实例
+          // _toResult(root)
+
+          // 输出 root 的 json 风格
+          // _toJSON(root)
+
+          // 查找 root 实例
+          // _root(root)
+
+          _printRoot(root)
         },
       }
     },
