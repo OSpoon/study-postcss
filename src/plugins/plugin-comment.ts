@@ -123,11 +123,42 @@ function _positionInside(comment: Comment) {
   log('comment.positionInside : ', pos2)
 }
 
+/**
+ * 克隆节点
+ * @param comment
+ */
+function _clone(comment: Comment) {
+  const node = comment.clone()
+  log('comment.clone : ', node?.toString())
+}
+
+/**
+ * 克隆节点,并将节点插入当前节点之后
+ * @param comment
+ */
+function _cloneAfter(comment: Comment) {
+  if (!Reflect.has(comment, 'cloned')) {
+    Reflect.set(comment, 'cloned', true)
+    comment.cloneAfter({
+      text: `CloneAfter: ${comment.text}`,
+    })
+  }
+}
+
+/**
+ * 克隆节点,并将节点插入当前节点之前
+ * @param comment
+ */
+function _cloneBefore(comment: Comment) {
+  if (!Reflect.has(comment, 'cloned')) {
+    Reflect.set(comment, 'cloned', true)
+    comment.cloneBefore({
+      text: `CloneBefore: ${comment.text}`,
+    })
+  }
+}
+
 function _printComment(comment: Comment) {
-  // log('comment.assign : ', comment.assign)
-  log('comment.clone : ', comment.clone)
-  log('comment.cloneAfter : ', comment.cloneAfter)
-  log('comment.cloneBefore : ', comment.cloneBefore)
   log('comment.raw : ', comment.raw)
   log('comment.root : ', comment.root)
 }
@@ -177,11 +208,14 @@ export default function (opts = {}): AcceptedPlugin {
           // 将字符串索引转换为行/列
           // _positionInside(comment)
 
-          log('comment.cloneAfter : ', comment.cloneAfter)
-          log('comment.cloneBefore : ', comment.cloneBefore)
+          // 克隆节点,并将节点插入当前节点之后
+          // _cloneAfter(comment)
 
-          // const str = comment.raw('before')
-          // log('str : ', str)
+          // 克隆节点,并将节点插入当前节点之前
+          // _cloneBefore(comment)
+
+          // 克隆节点
+          // _clone(comment)
         },
       }
     },

@@ -180,3 +180,52 @@ function _positionInside(comment: Comment) {
   log('comment.positionInside : ', pos2)
 }
 ```
+
+### clone, 克隆
+
+#### clone, 克隆节点
+
+```js
+/**
+ * 克隆节点
+ * @param comment
+ */
+function _clone(comment: Comment) {
+  const node = comment.clone()
+  log('comment.clone : ', node?.toString())
+}
+```
+
+#### cloneBefore, 克隆节点并插入到当前节点之前
+
+```js
+/**
+ * 克隆节点,并将节点插入当前节点之前
+ * @param comment
+ */
+function _cloneBefore(comment: Comment) {
+  if (!Reflect.has(comment, 'cloned')) {
+    Reflect.set(comment, 'cloned', true)
+    comment.cloneBefore({
+      text: `CloneBefore: ${comment.text}`,
+    })
+  }
+}
+```
+
+#### cloneAfter, 克隆节点并插入到当前节点之后
+
+```js
+/**
+ * 克隆节点,并将节点插入当前节点之后
+ * @param comment
+ */
+function _cloneAfter(comment: Comment) {
+  if (!Reflect.has(comment, 'cloned')) {
+    Reflect.set(comment, 'cloned', true)
+    comment.cloneAfter({
+      text: `CloneAfter: ${comment.text}`,
+    })
+  }
+}
+```

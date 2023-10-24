@@ -4,6 +4,7 @@ import postcss from 'postcss'
 import pluginRoot from './plugins/plugin-root'
 import pluginRule from './plugins/plugin-rule'
 import pluginComment from './plugins/plugin-comment'
+import pluginAtRule from './plugins/plugin-atrule'
 
 async function startup() {
   const text = `
@@ -34,7 +35,8 @@ ul li {
   const plugins = [
     // pluginRoot(),
     // pluginRule(),
-    pluginComment(),
+    // pluginComment(),
+    pluginAtRule(),
   ]
   const result = await postcss(plugins).process(text, { from: undefined, to: undefined })
   log('Result : \n', result.root.toString())
